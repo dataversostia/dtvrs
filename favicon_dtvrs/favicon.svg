@@ -1,0 +1,30 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo opcional (comentar si prefieres transparencia) -->
+  <circle cx="100" cy="100" r="100" fill="#D4DEE8"/>
+  
+  <!-- Líneas de conexión -->
+  <line x1="100" y1="100" x2="60" y2="60" stroke="#2C3E50" stroke-width="8" stroke-linecap="round"/>
+  <line x1="100" y1="100" x2="140" y2="60" stroke="#2C3E50" stroke-width="8" stroke-linecap="round"/>
+  <line x1="100" y1="100" x2="140" y2="140" stroke="#2C3E50" stroke-width="8" stroke-linecap="round"/>
+  <line x1="100" y1="100" x2="60" y2="140" stroke="#2C3E50" stroke-width="8" stroke-linecap="round"/>
+  
+  <!-- Nodo central -->
+  <circle cx="100" cy="100" r="18" fill="#2C3E50"/>
+  <circle cx="100" cy="100" r="10" fill="#D4DEE8"/>
+  
+  <!-- Nodo superior izquierdo -->
+  <circle cx="60" cy="60" r="14" fill="#2C3E50"/>
+  <circle cx="60" cy="60" r="8" fill="#D4DEE8"/>
+  
+  <!-- Nodo superior derecho -->
+  <circle cx="140" cy="60" r="14" fill="#2C3E50"/>
+  <circle cx="140" cy="60" r="8" fill="#D4DEE8"/>
+  
+  <!-- Nodo inferior derecho -->
+  <circle cx="140" cy="140" r="14" fill="#2C3E50"/>
+  <circle cx="140" cy="140" r="8" fill="#D4DEE8"/>
+  
+  <!-- Nodo inferior izquierdo -->
+  <circle cx="60" cy="140" r="14" fill="#2C3E50"/>
+  <circle cx="60" cy="140" r="8" fill="#D4DEE8"/>
+</svg>
