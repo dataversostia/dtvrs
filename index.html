@@ -1429,14 +1429,35 @@ async function generatePayOrder(format) {
     return;
   }
 
+  const MIME = {
+    csv: 'text/csv;charset=utf-8',
+    xlsx: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    pdf: 'application/pdf',
+  };
+  function downloadViaBrowser(filename, fileData, mime) {
+    const blob = new Blob([fileData], { type: mime });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 2000);
+  }
+
   const btn = document.getElementById('payOrderBtn');
   const originalLabel = btn.innerHTML;
+  const inClaudeArtifact = typeof claude !== 'undefined' && claude && typeof claude.use === 'function';
   try {
-    const downloads = await claude.use('downloads');
-    if (!downloads) { alert('La descarga no está disponible en esta vista.'); return; }
     btn.disabled = true;
     btn.textContent = 'Generando…';
-    await downloads.save({ filename, data });
+    const downloads = inClaudeArtifact ? await claude.use('downloads') : null;
+    if (downloads) {
+      await downloads.save({ filename, data });
+    } else {
+      downloadViaBrowser(filename, data, MIME[format]);
+    }
   } catch (err) {
     if (err && err.code !== 'declined') {
       alert('No se pudo generar la orden de pago: ' + (err && err.message ? err.message : err));
